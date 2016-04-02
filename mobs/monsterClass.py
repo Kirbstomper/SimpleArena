@@ -1,8 +1,8 @@
 class monster:
-    player = -1
 
-    def setPlayer(sPlayer):
-       player = sPlayer
+
+    def setPlayer(self,sPlayer):
+       self.player = sPlayer
 
     def __init__(self,sName,sHealth, sBody,sSmarts,sPunch,sThresh):
         self.name = sName
@@ -28,11 +28,11 @@ class monster:
     def act(self):
         if (self.alive):
             if(self.health>self.threshold):
-                print(monster.player.name, " Took ")
-                monster.player.takeDamage(self.calculateDamage()-monster.player.body*2)
+                print(self.player.name)
+                self.player.takeDamage(self.calculateDamage()-self.player.body*2)
             else:
                 healing = 5 + (self.smarts*3)
                 print(self.name, " is healing ", healing, " damage!")
                 self.health+= healing
         else:
-            print(self.name, " lies dead")
+            print(self.name, "lies dead")

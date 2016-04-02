@@ -54,8 +54,8 @@ class monster:
 
     player = -1
 
-    def setPlayer(sPlayer):
-       player = sPlayer
+    def setPlayer(self,sPlayer):
+       self.player = sPlayer
 
     def __init__(self,sName,sHealth, sBody,sSmarts,sPunch,sThresh):
         self.name = sName
