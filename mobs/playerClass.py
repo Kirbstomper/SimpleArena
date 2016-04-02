@@ -10,13 +10,34 @@ class player:
         name = sName
 
     #Heals yourself based on the formula
-    def HealSelf(self):
+    def healSelf(self):
         if (self.magicCheck(30)):
             self.magic -=30
             self.health += (self.smarts*5)
 
     # Attacks a monster and deals damage to it
-    def attack(self,target:monster):
+    def act(self,listOfMonsters):
+        turnOver = False
+        print("Please select your action for the turn")
+        while(input is not 1 or 2 or 3):
+            choice = int(input("1 : Fight\n2:Heal\n 3:Cry\n"))
+            if choice == 1:
+                self.chooseToAttack(listOfMonsters)
+            if choice == 2:
+                self.healSelf()
+            if choice == 3:
+                print("You cry, wasting a turn. Baby")
+
+    def chooseToAttack(self,monList):
+        print("Select a monster to attack:")
+        for x in range(0,len(monList)):
+            print (x+1,monList[x].name,)
+        choice = 0
+        while(choice<0 or choice> len(monList)):
+            choice = (int(input('?')))
+        self.attack(monList[choice-1])
+
+    def attack(self,target):
         damage = (self.punch*10) - target.body
         target.takeDamage(damage)
        #simple function to check if enough mana to cast a spell
@@ -25,9 +46,16 @@ class player:
     def magicCheck(self,val):
         return self.magic>=val
 
+    def takeDamage(self,dam):
+        if(self.health-dam <=0):
+            self.health = 0
+            print(player.name.upper(),"HAS DIED")
+        else:
+            self.health -=dam
+
     def levelUp(self):
         points = 3
-        input = True
+        validIn = True
         while(points!=0):
             while(input):
 
@@ -36,49 +64,15 @@ class player:
                 stat = str(stat).upper()[0]
                 if(stat == 'S'):
                     self.smarts +=1
-                    input = False
+                    validIn = False
                 if(stat == 'B'):
                     self.body += 1
-                    input = False
+                    validIn = False
                 if (stat=='P'):
                     self.punch +=1
-                    input = False
+                    validIn = False
                 print("Please enter an actual stat next time!")
 
             points-=1
 
         print("Punch:",self.punch,"Smarts:",self.smarts,"Body:",self.body)
-
-## The monster class base any extenstions done will be to add some challenge
-class monster:
-
-    player = -1
-
-    def setPlayer(sPlayer):
-       player = sPlayer
-
-    def __init__(self,sName,sHealth, sBody,sSmarts,sPunch,sThresh):
-        self.name = sName
-        self.body = sBody
-        self.smarts = sSmarts
-        self.punch = sPunch
-        self.health = sHealth
-        self.threshold = sThresh
-
-        #Calculates the amount of damage to deal the player
-
-    def calculateDamage(self):
-        return self.punch*5
-        #Deals damage to the player
-
-    def takeDamage(self):
-
-
-    def act(self):
-        if(self.health>self.threshold):
-                print(player.name, " Took ")
-                player.takedamage(self.calculateDamage()-player.body*2)
-        else:
-            healing = 5 + (self.smarts*3)
-            print(self.name, " is healing ", healing, " damage!")
-            self.health+= healing
