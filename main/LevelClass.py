@@ -21,11 +21,15 @@ class Level:
             x.setPlayer(self.player)
     def battle(self):
         while(True):
+            print(self.player.name + ": Health:"+str(self.player.health) + "Mana:"+str(self.player.magic))
             self.player.act(self.LevelEnemies)
             for x in self.LevelEnemies:
                 x.act()
+            print("\n")
+
             # If all enemies are dead, returns to exit the function
             if (all(x.alive == False for x in self.LevelEnemies)):
+                print("\n")
                 return
             if(self.player.alive == False):
                 self.setEnding("Such a sad fate, you have died. Try again some other day!")
@@ -41,4 +45,3 @@ class Level:
         self.battle()
         #self.LevelPlayerUp()
         print(self.endingStory)
-

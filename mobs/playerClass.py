@@ -51,7 +51,7 @@ class player:
         self.attack(monList[choice-1])
 
     def attack(self,target):
-        damage = (self.punch*10) - target.body
+        damage = (self.punch*10)
         target.takeDamage(damage)
        #simple function to check if enough mana to cast a spell
 
@@ -60,12 +60,14 @@ class player:
         return self.magic>=val
 
     def takeDamage(self,dam):
-        if(self.health-dam <=0):
+        damageToTake = dam - self.body
+        if(self.health-damageToTake <=0):
             self.health = 0
             print(self.name.upper()+" HAS DIED")
             self.alive = False
         else:
-            self.health -=dam
+            print(self.name + " has taken " + str(damageToTake))
+            self.health -=damageToTake
 
     def levelUp(self):
         points = 3
@@ -90,3 +92,7 @@ class player:
             points-=1
 
         print("Punch:",self.punch,"Smarts:",self.smarts,"Body:",self.body)
+
+    def healForMatch(self):
+        self.health += 70
+        self.magic += 50

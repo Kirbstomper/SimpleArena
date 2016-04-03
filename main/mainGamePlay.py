@@ -23,8 +23,14 @@ print("Thank you for your cooperation, may the odds in the arena be ever in your
 testLevel = LevelClass.Level(UserPlayer)
 testLevel.setOpening("Welcome to the arena "+UserPlayer.name +",\n Here you will face many challeneges\n have a test against these goblins!")
 testLevel.setEnding("You survived? While I am impressed don't expect us to go easy on you the next time....")
-testLevel.addEnemy([monsterClass.monster("Gobin Sukr",30,5,5,5,10),monsterClass.monster("Gobin Gxudz",30,5,5,5,10),monsterClass.monster("Goblin Grexut ",30,5,5,5,10)])
+testLevel.addEnemy([monsterClass.Goblin("Gobin Sukr"),monsterClass.Goblin("Gobin Gxudz"),monsterClass.Goblin("Goblin Grexut")])
 testLevel.play()
+UserPlayer.healForMatch()
 
+print("You retire back to your room for the night tried but confident from todays victory.\n You hear screams from the outside, but by the morning they are silent to you.")
 
-
+#Level 2. Includes a Necromancer who can summon shit
+NecroFight = LevelClass.Level(UserPlayer)
+NecroFight.setOpening("Today's opponent is a Necromancer and his minions.\n The rookie can't possibly win this fight.")
+NecroFight.setEnding("TODAYS VICTOR IS "+ UserPlayer.name+". \n Who somehow killed the one who thrives on death.\n IS THIS PERSON NOT A MORTAL?")
+NecroFight.addEnemy()
