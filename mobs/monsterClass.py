@@ -113,6 +113,7 @@ class SkullWarrior(monster):
             #print("ACTING")
             self.player.takeDamage(10)
 
+
 class Manticore(monster):
 
     def __init__(self):
@@ -138,3 +139,31 @@ class Manticore(monster):
 
             self.player.takeDamage(self.calculateDamage())
             self.poisonDealt += 1
+
+
+
+class Friend(monster):
+
+    def __init__(self,sName):
+        self.name = sName
+        self.health = 400
+        self.magic = 200
+        self.body = 20
+        self.smarts = 20
+        self.punch = 25
+        self.alive = True
+        self.threshold = 100
+
+
+    def act(self):
+        if self.alive:
+            print("YOU MUST DIE!")
+            if (self.magic >= 50):
+                self.magic -=50
+                print(self.name + " has thrown a fire ball!")
+                self.player.takeDamage(self.smarts*2)
+            if (self.health <= self.threshold):
+                print(self.player.name + " don't.... you... remember")
+            if (self.health <= 50):
+                print("we...should be...friends....")
+

@@ -1,3 +1,5 @@
+from mobs import monsterClass
+
 class player:
     health = 100
     magic = 90
@@ -35,7 +37,11 @@ class player:
                 self.healSelf()
                 turnOver=True
             elif choice == 3:
-                print("You cry, wasting a turn. Baby")
+                if(isinstance(listOfMonsters[0],monsterClass.Friend)):
+                    print("You recognize your friend, you start to cry")
+                    print("They also begin to weep")
+                    print("But they do not drop their weapon.")
+                else:print("You cry, wasting a turn. Baby")
                 turnOver=True
             else:
                 print("Please enter a real choice")

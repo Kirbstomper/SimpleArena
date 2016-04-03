@@ -24,7 +24,7 @@ testLevel = LevelClass.Level(UserPlayer)
 testLevel.setOpening("Welcome to the arena "+UserPlayer.name +",\n Here you will face many challeneges\n have a test against these goblins!")
 testLevel.setEnding("You survived? While I am impressed don't expect us to go easy on you the next time....")
 testLevel.addEnemy([monsterClass.Goblin("Gobin Sukr"),monsterClass.Goblin("Gobin Gxudz"),monsterClass.Goblin("Goblin Grexut")])
-#testLevel.play()
+testLevel.play()
 UserPlayer.healForMatch()
 
 print("You retire back to your room for the night tried but confident from todays victory.\n You hear screams from the outside, but by the morning they are silent to you.")
@@ -40,15 +40,37 @@ NecroFight.addEnemy([monsterClass.Necromancer("Nercro Steve",NecroFight.LevelEne
    # print(x.name)
 #for x in NecroFight.LevelEnemies[0].Allies:
     #print(x.name + " :lo")
-#NecroFight.play()
+NecroFight.play()
 
 UserPlayer.healForMatch()
 
-print("You clean the bone dust off your hands, it was a tough battle today\n You can faintly hear the sound of " + friendName+ ". \n But you think that could never be true, they escaped.\n You dream of them that night")
+print("You clean the bone dust off your hands, it was a tough battle today"
+      "\n You can faintly hear the sound of " + friendName+ ". "
+     "\n But you think that could never be true, they escaped.\n You dream of them that night")
+
+
 
 # Level 3, This one includes a manticore that deals poison that increases every turn Best kill him fast
 ManticoreFight = LevelClass.Level(UserPlayer)
-ManticoreFight.setOpening("Today's contestant vs the daring "+UserPlayer.name + " is a GIANT FREAKING MANTICORE HOLY CRAP\n HOW DID THEY TAME THIS BEAST\n CAN OUR ROOKIE WIN?")
+ManticoreFight.setOpening("Today's contestant vs the daring "+UserPlayer.name + " is a GIANT FREAKING MANTICORE HOLY CRAP\n "
+                                                                                "HOW DID THEY TAME THIS BEAST\n"
+                                                                                " CAN OUR ROOKIE WIN?")
 ManticoreFight.setEnding(UserPlayer.name+" HAS PUNCHED THE HEAD OFF THE BEAST!\n ANOTHER VICTORY, WHATS NEXT? A GOD?")
 ManticoreFight.addEnemy([monsterClass.Manticore()])
 ManticoreFight.play()
+
+UserPlayer.healForMatch()
+
+
+# Level 4, This is the last level. You face off against an opponent you may already know....
+
+FinalLevel = LevelClass.Level(UserPlayer)
+FinalLevel.setOpening("Today we have in one corner our champion, killer of necromancers and hunter of beasts,\n"+UserPlayer.name+
+                      "\n The opponent today will be a tough one, for a number of reason...")
+FinalLevel.setEnding("You raise your fist ready to deliver the final blow..."
+                     "\n Their end is swift."
+                     "\n The life fades from their eyes"
+                     "\n As the humanity fades further from your own"
+                     )
+FinalLevel.addEnemy([monsterClass.Friend(friendName)])
+FinalLevel.play()
