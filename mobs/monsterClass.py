@@ -63,7 +63,7 @@ class Goblin(monster):
         else:
             print(self.name + " lies on their arms dead")
 
-    # This monster has the uniqe ability to raise a fallen comrade from the dead as a skellington warrior!
+    # This monster has the uniqe ability to raise a fallen comrade from the dead as a skull warrior!
 class Necromancer(monster):
     def __init__(self,sName,sListOfMonsters):
         self.name = sName
@@ -110,5 +110,31 @@ class SkullWarrior(monster):
 
     def act(self):
         if(self.alive):
-            print("ACTING")
+            #print("ACTING")
             self.player.takeDamage(10)
+
+class Manticore(monster):
+
+    def __init__(self):
+        self.name = "Mannticore"
+        self.body = 10
+        self.smarts = 3
+        self.punch = 15
+        self.alive = True
+        self.health = 250
+        self.poisonDealt = 0
+        self.threshold = 100
+
+        # Each turn the manticore adds a poison counter
+    def act(self):
+        if(self.alive):
+            if(self.poisonDealt>0):
+                print("Poison damage!")
+                self.player.takeDamage(self.poisonDealt*10)
+            #The manticore also has a rage mode!
+            if(self.health<=self.threshold):
+                print("The Manticore attacks with rage!")
+                self.player.takeDamage(self.calculateDamage())
+
+            self.player.takeDamage(self.calculateDamage())
+            self.poisonDealt += 1

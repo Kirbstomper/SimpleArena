@@ -33,11 +33,22 @@ print("You retire back to your room for the night tried but confident from today
 NecroFight = LevelClass.Level(UserPlayer)
 NecroFight.setOpening("Today's opponent is a Necromancer and his minions.\n The rookie can't possibly win this fight.")
 NecroFight.setEnding("TODAYS VICTOR IS "+ UserPlayer.name+". \n Who somehow killed the one who thrives on death.\n IS THIS PERSON NOT A MORTAL?")
-NecroFight.addEnemy([monsterClass.Necromancer("Nercro Steve",NecroFight.LevelEnemies),monsterClass.Goblin("Remmy"),monsterClass.Goblin("Paner")])
-NecroFight.LevelEnemies[0].act()
+NecroFight.addEnemy([monsterClass.Necromancer("Nercro Steve",NecroFight.LevelEnemies),monsterClass.Goblin("Remmy"),monsterClass.Goblin("Paner"),monsterClass.SkullWarrior()])
+#NecroFight.LevelEnemies[0].act()
 #NecroFight.addEnemy([monsterClass.Goblin("packy")])
 #for x in NecroFight.LevelEnemies:
    # print(x.name)
 #for x in NecroFight.LevelEnemies[0].Allies:
     #print(x.name + " :lo")
-NecroFight.play()
+#NecroFight.play()
+
+UserPlayer.healForMatch()
+
+print("You clean the bone dust off your hands, it was a tough battle today\n You can faintly hear the sound of " + friendName+ ". \n But you think that could never be true, they escaped.\n You dream of them that night")
+
+# Level 3, This one includes a manticore that deals poison that increases every turn Best kill him fast
+ManticoreFight = LevelClass.Level(UserPlayer)
+ManticoreFight.setOpening("Today's contestant vs the daring "+UserPlayer.name + " is a GIANT FREAKING MANTICORE HOLY CRAP\n HOW DID THEY TAME THIS BEAST\n CAN OUR ROOKIE WIN?")
+ManticoreFight.setEnding(UserPlayer.name+" HAS PUNCHED THE HEAD OFF THE BEAST!\n ANOTHER VICTORY, WHATS NEXT? A GOD?")
+ManticoreFight.addEnemy([monsterClass.Manticore()])
+ManticoreFight.play()
