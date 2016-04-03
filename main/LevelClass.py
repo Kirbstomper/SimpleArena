@@ -21,7 +21,7 @@ class Level:
             x.setPlayer(self.player)
     def battle(self):
         while(True):
-            print(self.player.name + ": Health:"+str(self.player.health) + "Mana:"+str(self.player.magic))
+            print(self.player.name + ": Health:"+str(self.player.health) + " Mana:"+str(self.player.magic))
             self.player.act(self.LevelEnemies)
             for x in self.LevelEnemies:
                 x.act()

@@ -11,4 +11,3 @@ testLevel.addEnemy([monsterClass.monster("Gobin1",30,5,5,5,10),monsterClass.mons
 
 testLevel.play()
 
-LevelOne = LevelClass.Level(UserPlayer)
