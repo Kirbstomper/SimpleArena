@@ -1,6 +1,5 @@
 class monster:
 
-
     def setPlayer(self,sPlayer):
        self.player = sPlayer
 
@@ -36,3 +35,5 @@ class monster:
                 self.health+= healing
         else:
             print(self.name, "lies dead")
+
+class StrongMan:monster

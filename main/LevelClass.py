@@ -8,6 +8,7 @@ class Level:
         self.endingStory  = ""
         self.LevelEnemies = []
         self.player = player
+
     def setOpening(self,oText):
         self.openingStory = oText
 

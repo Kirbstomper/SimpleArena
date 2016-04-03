@@ -10,6 +10,9 @@ class player:
     def __init__(self, sName):
         self.name = sName
         self.alive = True
+        self.body = 5
+        self.smarts = 5
+        self.punch = 5
     #Heals yourself based on the formula
     def healSelf(self):
         if (self.magicCheck(30)):
