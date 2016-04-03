@@ -28,7 +28,7 @@ class monster:
     def act(self):
         if (self.alive):
             if(self.health>self.threshold):
-                print(self.player.name)
+                #print(self.player.name)
                 self.player.takeDamage(self.calculateDamage()-self.player.body*2)
             else:
                 healing = 5 + (self.smarts*3)

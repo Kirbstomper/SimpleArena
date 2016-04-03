@@ -6,9 +6,10 @@ class player:
     punch = 2
     body = 2
     exp = 0
+
     def __init__(self, sName):
         self.name = sName
-
+        self.alive = True
     #Heals yourself based on the formula
     def healSelf(self):
         if (self.magicCheck(30)):
@@ -58,7 +59,8 @@ class player:
     def takeDamage(self,dam):
         if(self.health-dam <=0):
             self.health = 0
-            print(player.name.upper(),"HAS DIED")
+            print(self.name.upper()+" HAS DIED")
+            self.alive = False
         else:
             self.health -=dam
 
@@ -72,13 +74,13 @@ class player:
                 stat = input("?")
                 stat = str(stat).upper()[0]
                 if(stat == 'S'):
-                    self.smarts +=1
+                    self.smarts += 1
                     validIn = False
                 if(stat == 'B'):
                     self.body += 1
                     validIn = False
                 if (stat=='P'):
-                    self.punch +=1
+                    self.punch += 1
                     validIn = False
                 print("Please enter an actual stat next time!")
 
